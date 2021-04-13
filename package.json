@@ -1,0 +1,25 @@
+{
+  "name": "veterinary-clinic",
+  "version": "1.0.0",
+  "description": "This is a tutorial for writing APIs.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drewmoore/veterinary-clinic.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drewmoore/veterinary-clinic/issues"
+  },
+  "homepage": "https://github.com/drewmoore/veterinary-clinic#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}

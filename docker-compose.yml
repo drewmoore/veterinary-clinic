@@ -1,0 +1,43 @@
+version: "3"
+services:
+  web:
+    build:
+      context: .
+      args:
+        - NODE_ENV=development
+    container_name: veterinary-clinic-web
+    command: npm start
+    volumes:
+      # Share the project code with the container
+      - "./:/app"
+      # Allow the application to write files to these directories in the container.
+      - /app/node_modules
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - DB_NAME=veterinary-clinic-development
+      - DB_USERNAME=root
+      - DB_PASSWORD=development-password
+      - DB_HOST=sql # Matches sql service's name in this file
+    networks:
+      - webnetwork
+    depends_on:
+      - sql
+  sql:
+    image: mysql:5.7.31
+    container_name: veterinary-clinic-sql
+    volumes:
+      - "sql:/data/db"
+    ports:
+      - "3306:3306"
+    environment:
+      # Must match web service's DB_PASSWORD env var
+      - MYSQL_ROOT_PASSWORD=development-password
+    networks:
+      - webnetwork
+networks:
+  webnetwork:
+    driver: bridge
+volumes:
+  sql:
