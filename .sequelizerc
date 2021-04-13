@@ -1,0 +1,10 @@
+/*
+ * This is a file that is automatically read by the sequelize-cli for running migrations. Note that the cli requires
+ * its config independently of the sequelize package used inside the application.
+ */
+const path = require('path');
+
+module.exports = {
+  config: path.resolve('src', 'db', 'sequelize-cli-config.js'),
+  'migrations-path': path.resolve('src', 'db', 'migrations')
+};

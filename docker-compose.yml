@@ -16,7 +16,7 @@ services:
       - "3001:3001"
     environment:
       - PORT=3001
-      - DB_NAME=veterinary-clinic-development
+      - DB_NAME=veterinary_clinic_development
       - DB_USERNAME=root
       - DB_PASSWORD=development-password
       - DB_HOST=sql # Matches sql service's name in this file
