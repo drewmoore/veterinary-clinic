@@ -6,6 +6,7 @@ const sequelize = require('../../src/db/client');
 const request = supertest(app);
 
 describe('Veterinary Clinic App Routes', () => {
+  //TODO: clean db
   afterAll(async () => {
     await sequelize.close();
   });
@@ -25,6 +26,28 @@ describe('Veterinary Clinic App Routes', () => {
 
       expect(response.status).toEqual(200);
       expect(response.body).toEqual({ status: 'ok' });
+    });
+  });
+
+  describe('/customers', () => {
+    describe('POST', () => {
+      let customer;
+      let response;
+
+      beforeEach(async () => {
+        customer = {
+          firstname: 'Rick',
+          lastname: 'Sanchez',
+          email: 'rick@get-shwifty.com'
+        };
+        response = await request.post('/customers').send(customer);
+      });
+
+      it('responds successfully with the new db entry', () => {
+        expect(response.status).toEqual(200);
+        expect(response.body.data).toEqual(expect.objectContaining(customer));
+      });
+
     });
   });
 });
